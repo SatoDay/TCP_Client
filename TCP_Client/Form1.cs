@@ -38,7 +38,7 @@ namespace TCP_Client
             {
                 client.Connect(ip, port);
                 stream = client.GetStream();
-                Thread receiveThread = new Thread(new ThreadStart(ReceiveMessage));
+                Thread receiveThread = new Thread(new ThreadStart(GetMessage));
                 receiveThread.Start();
                 richTextBox1.Text += "Вы вошли в чат" + Environment.NewLine;
             }
@@ -66,7 +66,7 @@ namespace TCP_Client
             stream.Close();
             client.Close();
         }
-        private void ReceiveMessage()
+        private void GetMessage()
         {
             while (true)
             {
